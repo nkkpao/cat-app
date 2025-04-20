@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import Checkbox from "./components/Checkbox";
 import Button from "./components/Button/Button";
 import CatImage from "./components/CatImage/CatImage";
+import "./App.scss";
 
 function App() {
   const [enabled, setEnabled] = useState(true);
@@ -34,24 +35,38 @@ function App() {
   return (
     <div
       style={{
-        width: 300,
-        margin: "30px auto",
-        padding: 20,
-        boxShadow: "0 0 5px #aaa",
+        minHeight: "100vh",
+        backgroundColor: "#f2f2f2",
+        color: "#333",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontFamily: "Arial, sans-serif",
       }}
     >
-      <Checkbox
-        label="Enabled"
-        checked={enabled}
-        onChange={() => setEnabled(!enabled)}
-      />
-      <Checkbox
-        label="Auto-refresh every 5 second"
-        checked={autoRefresh}
-        onChange={() => setAutoRefresh(!autoRefresh)}
-      />
-      <Button onClick={fetchCat}>Get cat</Button>
-      <CatImage imageUrl={imageUrl} />
+      <div
+        style={{
+          width: 320,
+          padding: 24,
+          borderRadius: 8,
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          backgroundColor: "#fff",
+          textAlign: "center",
+        }}
+      >
+        <Checkbox
+          label="Enabled"
+          checked={enabled}
+          onChange={() => setEnabled(!enabled)}
+        />
+        <Checkbox
+          label="Auto-refresh every 5 second"
+          checked={autoRefresh}
+          onChange={() => setAutoRefresh(!autoRefresh)}
+        />
+        <Button onClick={fetchCat}>Get cat</Button>
+        <CatImage imageUrl={imageUrl} />
+      </div>
     </div>
   );
 }
